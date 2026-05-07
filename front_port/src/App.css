@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+body {
+  font-family: sans-serif;
+}
+
+/* Hide scrollbar but allow scrolling */
+
+.scroll-hidden {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scroll-hidden::-webkit-scrollbar {
+  display: none;
+}
