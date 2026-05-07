@@ -3,51 +3,51 @@ import { motion } from "framer-motion";
 
 const Certificates = () => {
 
-    // const certificates = [
+    const certificates = [
 
-    //     {
-    //         name: "Machine Learning Certification",
-    //         issuer: "Coursera",
+        {
+            name: "Machine Learning Certification",
+            issuer: "Coursera",
 
-    //         description:
-    //             "Completed machine learning fundamentals including regression, classification, and clustering.",
+            description:
+                "Completed machine learning fundamentals including regression, classification, and clustering.",
 
-    //         image:
-    //             "/images/ml-certificate.png",
+            image:
+                "/images/ml-certificate.png",
 
-    //         url:
-    //             "/images/ml-certificate.png"
-    //     },
+            url:
+                "/images/ml-certificate.png"
+        },
 
-    //     {
-    //         name: "Python Programming Certification",
-    //         issuer: "Udemy",
+        {
+            name: "Python Programming Certification",
+            issuer: "Udemy",
 
-    //         description:
-    //             "Learned Python fundamentals, data structures, and real-world applications.",
+            description:
+                "Learned Python fundamentals, data structures, and real-world applications.",
 
-    //         image:
-    //             "/images/ml-certificate.png",
+            image:
+                "/images/ml-certificate.png",
 
-    //         url:
-    //             "/images/ml-certificate.png"
-    //     },
+            url:
+                "/images/ml-certificate.png"
+        },
 
-    //     {
-    //         name: "Full Stack Web Development",
-    //         issuer: "freeCodeCamp",
+        {
+            name: "Full Stack Web Development",
+            issuer: "freeCodeCamp",
 
-    //         description:
-    //             "Built responsive web applications using React, APIs, and backend technologies.",
+            description:
+                "Built responsive web applications using React, APIs, and backend technologies.",
 
-    //         image:
-    //             "/images/ml-certificate.png",
+            image:
+                "/images/ml-certificate.png",
 
-    //         url:
-    //             "/images/ml-certificate.png"
-    //     }
+            url:
+                "/images/ml-certificate.png"
+        }
 
-    // ];
+    ];
 
     return (
 
