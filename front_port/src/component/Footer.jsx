@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
 
@@ -12,7 +13,9 @@ const Footer = () => {
                 Built with React & Tailwind CSS.
 
             </p>
-            <a className="hover:text-orange-500" href="/admin">admin Dashboard</a>
+            <Link className="hover:text-orange-500" to="/admin">
+                Admin Dashboard
+            </Link>
 
         </footer>
 
