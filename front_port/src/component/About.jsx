@@ -13,7 +13,7 @@ const About = () => {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 
             grid md:grid-cols-2 gap-12 md:gap-16 items-center">
 
-                {/* Left Side — Text */}
+
 
                 <motion.div
 
@@ -69,7 +69,7 @@ const About = () => {
                 </motion.div>
 
 
-                {/* Right Side — Highlights */}
+
 
                 <motion.div
 

@@ -3,7 +3,7 @@ import axios from "axios";
 
 const Qualification = () => {
 
-    const API = "http://127.0.0.1:5000";
+
 
     const [formdata, setFormdata] = useState({
         degree: "",
@@ -29,7 +29,7 @@ const Qualification = () => {
         try {
 
             await axios.post(
-                `http://127.0.0.1:5000/add_qualification`,
+                `https://myprofessional-portfolio-1.onrender.com/add_qualification`,
                 formdata
             );
 
@@ -63,7 +63,7 @@ const Qualification = () => {
         try {
 
             await axios.delete(
-                `http://127.0.0.1:5000/delete_qualification/${id}`
+                `https://myprofessional-portfolio-1.onrender.com/delete_qualification/${id}`
             );
 
             alert("Deleted successfully ✅");
@@ -85,7 +85,7 @@ const Qualification = () => {
         try {
 
             const res = await axios.get(
-                `http://127.0.0.1:5000/get_qualification`
+                `https://myprofessional-portfolio-1.onrender.com/get_qualification`
             );
 
             setQualification(res.data);

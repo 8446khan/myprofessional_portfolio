@@ -20,7 +20,7 @@ const Projects = () => {
     const fetchdata = async () => {
         try {
             const res = await axios.get(
-                "http://127.0.0.1:5000/viewprojects"
+                "https://myprofessional-portfolio-1.onrender.com/viewprojects"
             );
             setProjects(res.data);
         } catch (error) {
@@ -33,7 +33,7 @@ const Projects = () => {
 
         try {
             const response = await axios.post(
-                "http://127.0.0.1:5000/projects",
+                "https://myprofessional-portfolio-1.onrender.com/projects",
                 formdata
             );
 
@@ -66,7 +66,7 @@ const Projects = () => {
 
         try {
             await axios.delete(
-                `http://127.0.0.1:5000/projects_delete/${id}`
+                `https://myprofessional-portfolio-1.onrender.com/projects_delete/${id}`
             );
 
             setProjects(

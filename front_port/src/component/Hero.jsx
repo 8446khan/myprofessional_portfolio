@@ -27,10 +27,10 @@ const Hero = () => {
             className="relative  h-screen flex items-center justify-center bg-black text-white overflow-hidden"
         >
 
-            {/* 🌧 Code Rain Background */}
+
             <CodeRain />
 
-            {/* ✨ Mouse Spotlight */}
+
 
             <motion.div
                 className="pointer-events-none absolute w-[400px] h-[400px] rounded-full bg-purple-500 blur-3xl opacity-20"
@@ -44,7 +44,7 @@ const Hero = () => {
                 }}
             />
 
-            {/* 🧊 Glass Hero Card */}
+
 
             <motion.div
 
@@ -73,7 +73,7 @@ const Hero = () => {
                 max-w-2xl mx-6"
             >
 
-                {/* Name */}
+
 
                 <h1 className="text-5xl md:text-6xl font-bold mb-6">
 
@@ -87,7 +87,7 @@ const Hero = () => {
 
                 </h1>
 
-                {/* Typing Roles */}
+
 
                 <h2 className="text-2xl md:text-3xl font-semibold text-blue-300 mb-6">
 
@@ -108,7 +108,7 @@ const Hero = () => {
 
                 </h2>
 
-                {/* Description */}
+
 
                 <p className="text-gray-300 mb-8 leading-relaxed">
 
@@ -119,7 +119,7 @@ const Hero = () => {
 
                 </p>
 
-                {/* Buttons */}
+
 
                 <div className="flex justify-center gap-4 flex-wrap">
 

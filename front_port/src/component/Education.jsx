@@ -26,7 +26,7 @@ const Education = () => {
         try {
 
             const res = await axios.get(
-                `http://127.0.0.1:5000/get_qualification`
+                `https://myprofessional-portfolio-1.onrender.com/get_qualification`
             );
 
             setQualification(res.data);
@@ -53,7 +53,7 @@ const Education = () => {
             bg-black text-white px-4 sm:px-6"
         >
 
-            {/* Heading */}
+
 
             <motion.h2
 
@@ -79,7 +79,7 @@ const Education = () => {
             </motion.h2>
 
 
-            {/* Education Cards */}
+
 
             <div className="
                 max-w-md 
@@ -130,7 +130,7 @@ const Education = () => {
                         "
                     >
 
-                        {/* Degree */}
+
 
                         <h3 className="
                             text-lg 
@@ -144,7 +144,7 @@ const Education = () => {
 
                         </h3>
 
-                        {/* Institute */}
+
 
                         <p className="
                             text-sm 
@@ -157,7 +157,7 @@ const Education = () => {
 
                         </p>
 
-                        {/* Year */}
+
 
                         <p className="
                             text-xs 

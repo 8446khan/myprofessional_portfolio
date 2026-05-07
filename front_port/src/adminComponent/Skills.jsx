@@ -18,7 +18,7 @@ const Skills = () => {
 
         try {
 
-            const response = await axios.post("http://127.0.0.1:5000/skill_add", skilladd)
+            const response = await axios.post("https://myprofessional-portfolio-1.onrender.com/skill_add", skilladd)
 
             console.log(response.data)
             alert("saved successfully")
@@ -39,7 +39,7 @@ const Skills = () => {
         const fetchdata = async () => {
             try {
 
-                const res = await axios.get("http://127.0.0.1:5000/viewskills")
+                const res = await axios.get("https://myprofessional-portfolio-1.onrender.com/viewskills")
                 console.log(res.data)
                 setSkillView(res.data)
             } catch (error) {
@@ -54,7 +54,7 @@ const Skills = () => {
     const deleteHandler = async (id) => {
 
         try {
-            await axios.delete(`http://127.0.0.1:5000/skill_delete${id}`)
+            await axios.delete(`https://myprofessional-portfolio-1.onrender.com/skill_delete${id}`)
             setSkillView(skillView.filter((skill) => skill.id !== id))
             alert("deleted sucessfully")
 

@@ -9,7 +9,7 @@ const UserInfo = () => {
         const fetchUsers = async () => {
             try {
                 const res = await axios.get(
-                    "http://localhost:5000/Viewuserinfo"
+                    "https://myprofessional-portfolio-1.onrender.com/Viewuserinfo"
                 );
                 setUsers(res.data);
             } catch (error) {
@@ -20,7 +20,7 @@ const UserInfo = () => {
         fetchUsers();
     }, []);
 
-    // Filter users based on search
+
     const filteredUsers = users.filter((user) =>
         user.name.toLowerCase().includes(search.toLowerCase()) ||
         user.email.toLowerCase().includes(search.toLowerCase()) ||
@@ -30,7 +30,7 @@ const UserInfo = () => {
     return (
         <div className="space-y-4">
 
-            {/* Search Input 🔍 */}
+
             <input
                 type="text"
                 placeholder="Search by name, email or message..."
@@ -39,7 +39,7 @@ const UserInfo = () => {
                 onChange={(e) => setSearch(e.target.value)}
             />
 
-            {/* User List */}
+
             {filteredUsers.map((user, index) => (
                 <div
                     key={index}
@@ -80,7 +80,7 @@ const UserInfo = () => {
                 </div>
             ))}
 
-            {/* No Result Message */}
+
             {filteredUsers.length === 0 && (
                 <p className="text-red-500 text-center">
                     No users found 🚫

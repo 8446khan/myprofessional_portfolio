@@ -3,17 +3,15 @@ import axios from "axios";
 
 const Certificates = () => {
 
-    // Form State
+
     const [formdata, setFormdata] = useState({
         name: "",
         issuer: "",
         image: null
     });
-
-    // Certificate List
     const [certificates, setCertificates] = useState([]);
 
-    // Handle Input Change
+
     const changeHandler = (e) => {
 
         if (e.target.name === "image") {
@@ -29,7 +27,7 @@ const Certificates = () => {
         }
     };
 
-    // Submit Form
+
     const submitHandler = async (e) => {
 
         e.preventDefault();
@@ -43,13 +41,13 @@ const Certificates = () => {
         try {
 
             await axios.post(
-                "http://localhost:5000/addcertificate",
+                "https://myprofessional-portfolio-1.onrender.com/addcertificate",
                 data
             );
 
             fetchCertificates();
 
-            // Reset form
+
             setFormdata({
                 name: "",
                 issuer: "",
@@ -61,13 +59,13 @@ const Certificates = () => {
         }
     };
 
-    // Fetch Certificates
+
     const fetchCertificates = async () => {
 
         try {
 
             const res = await axios.get(
-                "http://localhost:5000/viewcertificate"
+                "https://myprofessional-portfolio-1.onrender.com/viewcertificate"
             );
 
             setCertificates(res.data);
@@ -81,13 +79,13 @@ const Certificates = () => {
         fetchCertificates();
     }, []);
 
-    // Delete Certificate
+
     const deleteCertificate = async (id) => {
 
         try {
 
             await axios.delete(
-                `http://localhost:5000/deletecertificate/${id}`
+                `https://myprofessional-portfolio-1.onrender.com/deletecertificate/${id}`
             );
 
             fetchCertificates();
@@ -100,7 +98,7 @@ const Certificates = () => {
     return (
         <div className="space-y-4">
 
-            {/* Form */}
+
             <div className="bg-gray-900 p-6 rounded-lg">
 
                 <h2 className="text-xl mb-4">
@@ -145,7 +143,7 @@ const Certificates = () => {
 
             </div>
 
-            {/* View Certificates */}
+
 
             {certificates.map((cert) => (
 
@@ -170,7 +168,7 @@ const Certificates = () => {
                     {cert.image && (
 
                         <img
-                            src={`http://localhost:5000/uploads/${cert.image}`}
+                            src={`"https://myprofessional-portfolio-1.onrender.com/uploads/${cert.image}`}
                             alt="certificate"
                             className="w-40 mt-2 rounded"
                         />

@@ -22,7 +22,7 @@ const Contact = () => {
 
         try {
             const response = await axios.post(
-                " http://127.0.0.1:5000/userformdata",
+                "https://myprofessional-portfolio-1.onrender.com/userformdata",
                 formdata
             );
 
@@ -48,7 +48,7 @@ const Contact = () => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(
-                    "http://127.0.0.1:5000/Viewuserinfo"
+                    "https://myprofessional-portfolio-1.onrender.com/Viewuserinfo"
                 );
 
                 console.log(response.data);
@@ -80,7 +80,7 @@ const Contact = () => {
                 className="max-w-xl mx-auto bg-white/10 p-6 rounded-2xl flex flex-col gap-5"
             >
 
-                {/* Name */}
+
                 <input
                     type="text"
                     name="name"
@@ -91,7 +91,7 @@ const Contact = () => {
                     className="p-3 rounded-xl bg-white/10 border"
                 />
 
-                {/* Email */}
+
                 <input
                     type="email"
                     name="email"
@@ -102,7 +102,7 @@ const Contact = () => {
                     className="p-3 rounded-xl bg-white/10 border"
                 />
 
-                {/* Message */}
+
                 <textarea
                     name="message"
                     placeholder="Your Message"
@@ -113,7 +113,7 @@ const Contact = () => {
                     className="p-3 rounded-xl bg-white/10 border resize-none"
                 />
 
-                {/* Button */}
+
                 <button
                     type="submit"
                     className="bg-purple-600 py-3 rounded-xl font-semibold"

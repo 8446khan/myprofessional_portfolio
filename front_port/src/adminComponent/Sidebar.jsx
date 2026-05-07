@@ -20,7 +20,7 @@ const Sidebar = () => {
     return (
         <div className="flex bg-gray-950 text-white">
 
-            {/* 🔹 Mobile Header */}
+
             <div className="md:hidden fixed top-0 left-0 w-full h-16 bg-black flex items-center justify-between px-4 z-50 border-b border-gray-800">
 
                 <h1 className="text-lg font-bold text-blue-500">
@@ -36,7 +36,7 @@ const Sidebar = () => {
 
             </div>
 
-            {/* 🔹 Sidebar */}
+
             <div
                 className={`fixed top-0 left-0 h-full w-72 bg-black border-r border-gray-800 p-6 transform transition-transform duration-300 z-40
 
@@ -60,7 +60,7 @@ const Sidebar = () => {
 
             </div>
 
-            {/* 🔹 Overlay */}
+
             {isOpen && (
                 <div
                     className="fixed inset-0 bg-black/50 md:hidden z-30"
@@ -68,7 +68,7 @@ const Sidebar = () => {
                 />
             )}
 
-            {/* 🔹 Main Content */}
+
             <div className="flex-1 w-full md:ml-72 pt-16 md:pt-10 p-6 md:p-10 min-h-screen">
 
                 <Outlet />

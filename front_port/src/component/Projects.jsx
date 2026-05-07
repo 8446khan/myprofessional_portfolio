@@ -5,50 +5,50 @@ import axios from "axios";
 const Projects = () => {
     const [projects, setProjects] = useState([])
 
-    const projects1 = [
-        {
-            name: "Railway Complaint System",
-            description:
-                "AI-based complaint categorization system with priority alerts and automatic authority notifications.",
-            url: "https://github.com/yourusername/project1",
-            year: "2025"
-        },
-        {
-            name: "Student Attendance System",
-            description:
-                "Secure smart attendance system designed to prevent proxy attendance using validation logic.",
-            url: "https://github.com/yourusername/project2",
-            year: "2024"
-        },
-        {
-            name: "Student Risk Prediction",
-            description:
-                "Machine learning model predicting student academic risk using performance analytics.",
-            url: "https://github.com/yourusername/project3",
-            year: "2024"
-        },
-        {
-            name: "AI Chatbot System",
-            description:
-                "Conversational AI chatbot built using NLP techniques and Flask backend.",
-            url: "https://github.com/yourusername/project4",
-            year: "2023"
-        },
-        {
-            name: "Portfolio Website",
-            description:
-                "Personal responsive portfolio website built using React and Tailwind CSS.",
-            url: "https://github.com/yourusername/project5",
-            year: "2023"
-        }
-    ];
+    // const projects1 = [
+    //     {
+    //         name: "Railway Complaint System",
+    //         description:
+    //             "AI-based complaint categorization system with priority alerts and automatic authority notifications.",
+    //         url: "https://github.com/yourusername/project1",
+    //         year: "2025"
+    //     },
+    //     {
+    //         name: "Student Attendance System",
+    //         description:
+    //             "Secure smart attendance system designed to prevent proxy attendance using validation logic.",
+    //         url: "https://github.com/yourusername/project2",
+    //         year: "2024"
+    //     },
+    //     {
+    //         name: "Student Risk Prediction",
+    //         description:
+    //             "Machine learning model predicting student academic risk using performance analytics.",
+    //         url: "https://github.com/yourusername/project3",
+    //         year: "2024"
+    //     },
+    //     {
+    //         name: "AI Chatbot System",
+    //         description:
+    //             "Conversational AI chatbot built using NLP techniques and Flask backend.",
+    //         url: "https://github.com/yourusername/project4",
+    //         year: "2023"
+    //     },
+    //     {
+    //         name: "Portfolio Website",
+    //         description:
+    //             "Personal responsive portfolio website built using React and Tailwind CSS.",
+    //         url: "https://github.com/yourusername/project5",
+    //         year: "2023"
+    //     }
+    // ];
 
 
     useEffect(() => {
         const fetchdata = async () => {
             try {
 
-                const res = await axios.get("http://127.0.0.1:5000/viewprojects")
+                const res = await axios.get("https://myprofessional-portfolio-1.onrender.com/viewprojects")
                 console.log(res.data)
                 setProjects(res.data)
             } catch (error) {
@@ -73,7 +73,7 @@ const Projects = () => {
             "
         >
 
-            {/* Title */}
+
             <motion.h2
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -91,10 +91,10 @@ const Projects = () => {
                 My Engineering Journey 🚀
             </motion.h2>
 
-            {/* Timeline Wrapper */}
+
             <div className="relative max-w-5xl mx-auto">
 
-                {/* Vertical Line */}
+
                 <div
                     className="
                     absolute
@@ -106,7 +106,7 @@ const Projects = () => {
                     "
                 />
 
-                {/* Scroll Container */}
+
                 <div
                     className="
                     max-h-[500px]
@@ -135,7 +135,7 @@ const Projects = () => {
                             "
                         >
 
-                            {/* Timeline Dot */}
+
                             <div
                                 className="
                                 absolute
@@ -151,7 +151,7 @@ const Projects = () => {
                                 "
                             />
 
-                            {/* Project Card */}
+
                             <div
                                 className="
                                 group
@@ -167,7 +167,7 @@ const Projects = () => {
                                 "
                             >
 
-                                {/* Project Name */}
+
                                 <h3
                                     className="
                                     text-lg sm:text-xl md:text-2xl
@@ -179,7 +179,7 @@ const Projects = () => {
                                     {project.title}
                                 </h3>
 
-                                {/* Description */}
+
                                 <p
                                     className="
                                     text-sm sm:text-base
@@ -191,7 +191,7 @@ const Projects = () => {
                                     {project.description}
                                 </p>
 
-                                {/* URL */}
+
                                 <a
                                     href={project.url}
                                     target="_blank"

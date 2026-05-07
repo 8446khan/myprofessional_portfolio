@@ -6,14 +6,14 @@ const AdminDashboard = () => {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    // 🔥 Fetch users when userInfo tab is active
+
     useEffect(() => {
         const fetchUsers = async () => {
             try {
                 setLoading(true);
 
                 const res = await axios.get(
-                    "http://localhost:5000/Viewuserinfo"
+                    "https://myprofessional-portfolio-1.onrender.com/Viewuserinfo"
                 );
 
                 setUsers(res.data);
@@ -31,7 +31,7 @@ const AdminDashboard = () => {
         }
     }, [activeTab]);
 
-    // Sidebar menu
+
     const menuItem = (name, label) => (
         <button
             onClick={() => setActiveTab(name)}
@@ -45,7 +45,7 @@ const AdminDashboard = () => {
         </button>
     );
 
-    // Input Component
+
     const Input = (props) => (
         <input
             {...props}
@@ -53,7 +53,7 @@ const AdminDashboard = () => {
         />
     );
 
-    // Card Component
+
     const Card = ({ children }) => (
         <div className="bg-gray-900 border border-gray-800 p-6 rounded-2xl shadow-lg">
             {children}
@@ -63,7 +63,7 @@ const AdminDashboard = () => {
     return (
         <div className="min-h-screen bg-gray-950 text-white flex">
 
-            {/* Sidebar */}
+
             <div className="w-72 bg-black p-6 space-y-3 border-r border-gray-800">
                 <h1 className="text-2xl font-bold mb-8 text-blue-500">
                     Admin Panel
@@ -76,10 +76,10 @@ const AdminDashboard = () => {
                 {menuItem("userInfo", "👤 User Information")}
             </div>
 
-            {/* Main Content */}
+
             <div className="flex-1 p-10">
 
-                {/* ---------------- PROJECTS ---------------- */}
+
                 {activeTab === "projects" && (
                     <Card>
                         <h2 className="text-2xl font-semibold mb-6">
@@ -98,7 +98,7 @@ const AdminDashboard = () => {
                     </Card>
                 )}
 
-                {/* ---------------- CERTIFICATES ---------------- */}
+
                 {activeTab === "certificates" && (
                     <Card>
                         <h2 className="text-2xl font-semibold mb-6">
@@ -117,7 +117,7 @@ const AdminDashboard = () => {
                     </Card>
                 )}
 
-                {/* ---------------- SKILLS ---------------- */}
+
                 {activeTab === "skills" && (
                     <Card>
                         <h2 className="text-2xl font-semibold mb-6">
@@ -140,7 +140,7 @@ const AdminDashboard = () => {
                     </Card>
                 )}
 
-                {/* ---------------- QUALIFICATION ---------------- */}
+
                 {activeTab === "qualification" && (
                     <Card>
                         <h2 className="text-2xl font-semibold mb-6">
@@ -159,7 +159,7 @@ const AdminDashboard = () => {
                     </Card>
                 )}
 
-                {/* ---------------- USER INFORMATION ---------------- */}
+
                 {activeTab === "userInfo" && (
                     <div className="space-y-6">
 

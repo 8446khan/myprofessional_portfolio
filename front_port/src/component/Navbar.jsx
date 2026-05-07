@@ -30,7 +30,7 @@ const Navbar = () => {
 
             <div className="flex items-center justify-between">
 
-                {/* Desktop Menu */}
+
                 <div className="hidden md:flex gap-8 text-white font-medium">
 
                     {links.map((link, index) => (
@@ -47,7 +47,7 @@ const Navbar = () => {
 
                 </div>
 
-                {/* Mobile Menu Button */}
+
                 <div className="md:hidden text-white">
 
                     <button
@@ -60,7 +60,7 @@ const Navbar = () => {
 
             </div>
 
-            {/* Mobile Menu Dropdown */}
+
 
             {isOpen && (
 
