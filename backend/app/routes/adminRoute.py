@@ -14,13 +14,14 @@ ADMIN_USERNAME = os.getenv("ADMIN_USERNAME", "")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "")
 
 
+@admin_bp.before_app_first_request
 def create_default_admin():
+    existing_admin = Adminauthentication.query.first()
 
-    admin = Adminauthentication.query.filter_by(username="admin").first()
-
-    if not admin:
-
-        admin = Adminauthentication(username="admin", password="admin123")
+    if not existing_admin:
+        admin = Adminauthentication(
+            username=os.getenv("ADMIN_USERNAME"), password=os.getenv("ADMIN_PASSWORD")
+        )
         db.session.add(admin)
         db.session.commit()
 
@@ -142,23 +143,16 @@ def change_admin():
     new_password = data.get("newPassword")
 
     admin = Adminauthentication.query.filter_by(username=old_username).first()
-    admins = Adminauthentication.query.all()
 
-    for a in admins:
-        print(a.username, a.password)
-
-    if not admin:
-        return jsonify({"success": False, "message": "Admin not found"})
-
-    if admin.password != old_password:
-        return jsonify({"success": False, "message": "Old credentials incorrect"})
+    if not admin or admin.password != old_password:
+        return jsonify({"success": False, "message": "Invalid old credentials"})
 
     admin.username = new_username
     admin.password = new_password
 
     db.session.commit()
 
-    return jsonify({"success": True, "message": "Credentials updated successfully"})
+    return jsonify({"success": True, "message": "Credentials updated"})
 
 
 @admin_bp.route("/Adminlogin", methods=["POST"])
@@ -168,7 +162,9 @@ def admin_login():
     username = (data.get("username") or "").strip()
     password = (data.get("password") or "").strip()
 
-    if username == ADMIN_USERNAME and password == ADMIN_PASSWORD:
+    admin = Adminauthentication.query.filter_by(username=username).first()
+
+    if admin and admin.password == password:
         return jsonify({"success": True, "message": "Login successful"})
 
     return jsonify({"success": False, "message": "Invalid credentials"})
