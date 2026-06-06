@@ -22,19 +22,21 @@ const ChangeAdminCredentials = () => {
                 }
             );
 
+            console.log(res.data)
             if (res.data.success) {
                 setMsg("✅ Credentials updated successfully");
 
                 localStorage.removeItem("admin");
 
                 setTimeout(() => {
-                    window.location.href = "/admin-login";
+                    window.location.href = "/AdminLoginPage";
                 }, 1500);
 
             } else {
                 setMsg("❌ Old credentials are incorrect");
             }
         } catch (err) {
+            console.log(err)
             setMsg("❌ Server error");
         }
     };
@@ -50,6 +52,7 @@ const ChangeAdminCredentials = () => {
 
                     <input
                         type="text"
+                        required
                         placeholder="Old Username"
                         className="w-full p-3 rounded-lg bg-gray-700 text-white outline-none focus:ring-2 focus:ring-blue-500"
                         onChange={(e) => setOldUsername(e.target.value)}
@@ -57,6 +60,7 @@ const ChangeAdminCredentials = () => {
 
                     <input
                         type="password"
+                        required
                         placeholder="Old Password"
                         className="w-full p-3 rounded-lg bg-gray-700 text-white outline-none focus:ring-2 focus:ring-blue-500"
                         onChange={(e) => setOldPassword(e.target.value)}
@@ -64,6 +68,7 @@ const ChangeAdminCredentials = () => {
 
                     <input
                         type="text"
+                        required
                         placeholder="New Username"
                         className="w-full p-3 rounded-lg bg-gray-700 text-white outline-none focus:ring-2 focus:ring-green-500"
                         onChange={(e) => setNewUsername(e.target.value)}
@@ -71,6 +76,7 @@ const ChangeAdminCredentials = () => {
 
                     <input
                         type="password"
+                        required
                         placeholder="New Password"
                         className="w-full p-3 rounded-lg bg-gray-700 text-white outline-none focus:ring-2 focus:ring-green-500"
                         onChange={(e) => setNewPassword(e.target.value)}
