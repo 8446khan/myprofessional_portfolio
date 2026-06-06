@@ -18,7 +18,7 @@ const AdminLoginPage = () => {
             console.log(res)
             if (res.data.success) {
                 localStorage.setItem("admin", "true");
-                window.location.href = "/admin";
+                window.location.href = "/projects";
             } else {
                 setMsg("❌ Invalid credentials");
             }
