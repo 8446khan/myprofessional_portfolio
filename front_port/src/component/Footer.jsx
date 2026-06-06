@@ -9,11 +9,11 @@ const Footer = () => {
 
             <p>
 
-                © 2026 Shoaib.
-                Built with React & Tailwind CSS.
+                © 2026 khan Shoaib.
+                Built with React |Tailwind CSS| Flask.
 
             </p>
-            <Link className="hover:text-orange-500" to="/admin">
+            <Link className="hover:text-orange-500" to="/admin/AdminLoginPage">
                 Admin Dashboard
             </Link>
 

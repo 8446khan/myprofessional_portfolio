@@ -3,16 +3,18 @@ from app.models.adminmodel import (
     projectTable,
     skilltable,
     QualificationTable,
+    Adminauthentication
 )
 
 from flask import Blueprint, request, jsonify
 
-# Blueprint
-admin_bp = Blueprint("admin_bp", __name__)
+import os
+from dotenv import load_dotenv
 
-# ==============================
-# PROJECT ROUTES
-# ==============================
+load_dotenv()
+
+
+admin_bp = Blueprint("admin_bp", __name__)
 
 
 @admin_bp.route("/projects", methods=["POST"])
@@ -70,11 +72,6 @@ def projects_delete(id):
     return jsonify({"message": "Project deleted successfully"})
 
 
-# ==============================
-# SKILL ROUTES
-# ==============================
-
-
 @admin_bp.route("/skill_add", methods=["POST"])
 def skill_add():
 
@@ -120,11 +117,6 @@ def skill_delete(id):
     db.session.commit()
 
     return jsonify({"message": "Skill deleted successfully"})
-
-
-# ==============================
-# QUALIFICATION ROUTES
-# ==============================
 
 
 @admin_bp.route("/add_qualification", methods=["POST"])
@@ -178,3 +170,45 @@ def delete_qualification(id):
     db.session.commit()
 
     return jsonify({"message": "Qualification deleted successfully"})
+
+
+@admin_bp.route("/change-admin", methods=["POST"])
+def change_admin():
+    data = request.get_json()
+
+    old_username = data.get("oldUsername")
+    old_password = data.get("oldPassword")
+    new_username = data.get("newUsername")
+    new_password = data.get("newPassword")
+
+    admin = Adminauthentication.query.filter_by(username=old_username).first()
+
+    if not admin:
+        return jsonify({"success": False, "message": "Admin not found"})
+
+    if admin.password != old_password:
+        return jsonify({"success": False, "message": "Old credentials incorrect"})
+
+    admin.username = new_username
+    admin.password = new_password
+
+    db.session.commit()
+
+    return jsonify({"success": True, "message": "Credentials updated successfully"})
+
+
+ADMIN_USERNAME = os.getenv("ADMIN_USERNAME")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
+
+
+@admin_bp.route("/Adminlogin", methods=["POST"])
+def admin_login():
+    data = request.get_json()
+
+    username = data.get("username")
+    password = data.get("password")
+
+    if username == ADMIN_USERNAME and password == ADMIN_PASSWORD:
+        return jsonify({"success": True, "message": "Login successful"})
+
+    return jsonify({"success": False, "message": "Invalid credentials"})

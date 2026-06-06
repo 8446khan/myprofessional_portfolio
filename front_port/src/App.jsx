@@ -18,6 +18,8 @@ import Certificates2 from "./adminComponent/Certificates";
 import Qualification from "./adminComponent/Qualification";
 import Skills2 from "./adminComponent/Skills";
 import UserInfo from "./adminComponent/UserInfo";
+import AdminLoginPage from "./component/AdminloginPage";
+import ChangeAdminCredentials from "./component/ChangeAdminCredentials";
 
 function App() {
   return (
@@ -54,6 +56,8 @@ function App() {
           <Route path="skills" element={<Skills2 />} />
           <Route path="qualification" element={<Qualification />} />
           <Route path="users" element={<UserInfo />} />
+          <Route path="AdminLoginPage" element={<AdminLoginPage />} />
+          <Route path="ChangeAdminCredentials" element={<ChangeAdminCredentials />} />
 
         </Route>
 
