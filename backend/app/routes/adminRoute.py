@@ -200,15 +200,25 @@ def change_admin():
 ADMIN_USERNAME = os.getenv("ADMIN_USERNAME")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 
+print("USERNAME:", os.getenv("ADMIN_USERNAME").strip())
+print("PASSWORD:", os.getenv("ADMIN_PASSWORD").strip())
+
 
 @admin_bp.route("/Adminlogin", methods=["POST"])
 def admin_login():
     data = request.get_json()
 
-    username = data.get("username")
-    password = data.get("password")
+    username = (data.get("username") or "").strip()
+    password = (data.get("password") or "").strip()
+
+    print("INPUT USERNAME:", repr(username))
+    print("INPUT PASSWORD:", repr(password))
+    print("ENV USERNAME:", repr(ADMIN_USERNAME))
+    print("ENV PASSWORD:", repr(ADMIN_PASSWORD))
 
     if username == ADMIN_USERNAME and password == ADMIN_PASSWORD:
         return jsonify({"success": True, "message": "Login successful"})
 
     return jsonify({"success": False, "message": "Invalid credentials"})
+
+
