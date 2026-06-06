@@ -10,7 +10,7 @@ const Skills = () => {
         const fetchdata = async () => {
             try {
 
-                const res = await axios.get("http://127.0.0.1:5000/viewskills")
+                const res = await axios.get("https://myprofessional-portfolio-1.onrender.com/viewskills")
                 console.log(res.data)
                 setSkillView(res.data)
             } catch (error) {
