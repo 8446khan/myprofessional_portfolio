@@ -14,7 +14,6 @@ ADMIN_USERNAME = os.getenv("ADMIN_USERNAME", "")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "")
 
 
-@admin_bp.before_app_first_request
 def create_default_admin():
     existing_admin = Adminauthentication.query.first()
 
