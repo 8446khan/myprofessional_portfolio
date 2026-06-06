@@ -18,7 +18,7 @@ const AdminLoginPage = () => {
             console.log(res)
             if (res.data.success) {
                 localStorage.setItem("admin", "true");
-                window.location.href = "/projects";
+                window.location.href = "/admin";
             } else {
                 setMsg("❌ Invalid credentials");
             }
@@ -37,6 +37,7 @@ const AdminLoginPage = () => {
                 <form onSubmit={handleLogin} className="space-y-4">
                     <input
                         type="text"
+                        required
                         placeholder="Username"
                         className="w-full p-3 rounded-lg bg-gray-700 text-white outline-none focus:ring-2 focus:ring-blue-500"
                         onChange={(e) => setUsername(e.target.value)}
@@ -44,6 +45,7 @@ const AdminLoginPage = () => {
 
                     <input
                         type="password"
+                        required
                         placeholder="Password"
                         className="w-full p-3 rounded-lg bg-gray-700 text-white outline-none focus:ring-2 focus:ring-blue-500"
                         onChange={(e) => setPassword(e.target.value)}
@@ -59,7 +61,7 @@ const AdminLoginPage = () => {
                     <p className="text-red-400 text-center">{msg}</p>
                 </form>
 
-                <p className="text-white text-center">Change creadential: <Link className="hover:text-orange-300 text-green-300" to="/admin/ChangeAdminCredentials">
+                <p className="text-white text-center">Change creadential: <Link className="hover:text-orange-300 text-green-300" to="/ChangeAdminCredentials">
                     Set Admin credential
 
                 </Link></p>
