@@ -1,12 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
 const ChangeAdminCredentials = () => {
     const [oldUsername, setOldUsername] = useState("");
     const [oldPassword, setOldPassword] = useState("");
     const [newUsername, setNewUsername] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [msg, setMsg] = useState("");
+    const navigate = useNavigate();
 
     const handleChange = async (e) => {
         e.preventDefault();
@@ -29,7 +30,8 @@ const ChangeAdminCredentials = () => {
                 localStorage.removeItem("admin");
 
                 setTimeout(() => {
-                    window.location.href = "/AdminLoginPage";
+                    navigate("/AdminLoginPage")
+
                 }, 1500);
 
             } else {
