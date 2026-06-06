@@ -48,6 +48,7 @@ function App() {
 
         <Route path="AdminLoginPage" element={<AdminLoginPage />} />
         <Route path="ChangeAdminCredentials" element={<ChangeAdminCredentials />} />
+
         <Route path="/admin" element={<AdminLayout />}>
 
           {/* Default Page */}
