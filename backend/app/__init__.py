@@ -4,6 +4,8 @@ from flask_cors import CORS
 
 db = SQLAlchemy()
 
+from app.routes.adminRoute import create_default_admin
+
 
 def create_app():
     app = Flask(__name__)
@@ -23,5 +25,6 @@ def create_app():
     with app.app_context():
 
         db.create_all()
+        create_default_admin()
 
     return app

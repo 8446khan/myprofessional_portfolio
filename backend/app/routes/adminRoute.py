@@ -14,6 +14,17 @@ ADMIN_USERNAME = os.getenv("ADMIN_USERNAME", "")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "")
 
 
+def create_default_admin():
+
+    admin = Adminauthentication.query.filter_by(username="admin").first()
+
+    if not admin:
+
+        admin = Adminauthentication(username="admin", password="admin123")
+        db.session.add(admin)
+        db.session.commit()
+
+
 @admin_bp.route("/projects", methods=["POST"])
 def projects():
     data = request.get_json()
@@ -131,6 +142,10 @@ def change_admin():
     new_password = data.get("newPassword")
 
     admin = Adminauthentication.query.filter_by(username=old_username).first()
+    admins = Adminauthentication.query.all()
+
+    for a in admins:
+        print(a.username, a.password)
 
     if not admin:
         return jsonify({"success": False, "message": "Admin not found"})
