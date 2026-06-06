@@ -3,25 +3,20 @@ from app.models.adminmodel import (
     projectTable,
     skilltable,
     QualificationTable,
-    Adminauthentication
+    Adminauthentication,
 )
-
 from flask import Blueprint, request, jsonify
-
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
-
 
 admin_bp = Blueprint("admin_bp", __name__)
+
+ADMIN_USERNAME = os.getenv("ADMIN_USERNAME", "")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "")
 
 
 @admin_bp.route("/projects", methods=["POST"])
 def projects():
-
     data = request.get_json()
-
     title = data.get("title")
     description = data.get("description")
     url = data.get("url")
@@ -29,11 +24,7 @@ def projects():
     if not title:
         return jsonify({"error": "Title is required"}), 400
 
-    new_project = projectTable(
-        title=title,
-        description=description,
-        url=url,
-    )
+    new_project = projectTable(title=title, description=description, url=url)
 
     db.session.add(new_project)
     db.session.commit()
@@ -43,47 +34,33 @@ def projects():
 
 @admin_bp.route("/viewprojects", methods=["GET"])
 def viewprojects():
-
     projectcards = projectTable.query.all()
 
-    result = []
-
-    for p in projectcards:
-        result.append(
-            {
-                "id": p.id,
-                "title": p.title,
-                "description": p.description,
-                "url": p.url,
-            }
-        )
-
-    return jsonify(result)
+    return jsonify(
+        [
+            {"id": p.id, "title": p.title, "description": p.description, "url": p.url}
+            for p in projectcards
+        ]
+    )
 
 
 @admin_bp.route("/projects_delete/<int:id>", methods=["DELETE"])
 def projects_delete(id):
-
     delete_entries = projectTable.query.get_or_404(id)
-
     db.session.delete(delete_entries)
     db.session.commit()
-
     return jsonify({"message": "Project deleted successfully"})
 
 
 @admin_bp.route("/skill_add", methods=["POST"])
 def skill_add():
-
     data = request.get_json()
-
     skill = data.get("skill")
 
     if not skill:
         return jsonify({"error": "Skill is required"}), 400
 
     new_skill = skilltable(skill=skill)
-
     db.session.add(new_skill)
     db.session.commit()
 
@@ -92,37 +69,22 @@ def skill_add():
 
 @admin_bp.route("/viewskills", methods=["GET"])
 def viewskills():
-
     get_skill = skilltable.query.all()
 
-    result = []
-
-    for s in get_skill:
-        result.append(
-            {
-                "id": s.id,
-                "skill": s.skill,
-            }
-        )
-
-    return jsonify(result)
+    return jsonify([{"id": s.id, "skill": s.skill} for s in get_skill])
 
 
 @admin_bp.route("/skill_delete/<int:id>", methods=["DELETE"])
 def skill_delete(id):
-
     skill_drop = skilltable.query.get_or_404(id)
-
     db.session.delete(skill_drop)
     db.session.commit()
-
     return jsonify({"message": "Skill deleted successfully"})
 
 
 @admin_bp.route("/add_qualification", methods=["POST"])
 def add_qualification():
-
-    data = request.json
+    data = request.get_json()
 
     degree = data.get("degree")
     college = data.get("college")
@@ -131,11 +93,7 @@ def add_qualification():
     if not degree:
         return jsonify({"error": "Degree is required"}), 400
 
-    new_qualification = QualificationTable(
-        degree=degree,
-        college=college,
-        year=year,
-    )
+    new_qualification = QualificationTable(degree=degree, college=college, year=year)
 
     db.session.add(new_qualification)
     db.session.commit()
@@ -145,17 +103,11 @@ def add_qualification():
 
 @admin_bp.route("/get_qualification", methods=["GET"])
 def get_qualification():
-
     q = QualificationTable.query.all()
 
     return jsonify(
         [
-            {
-                "id": i.id,
-                "degree": i.degree,
-                "college": i.college,
-                "year": i.year,
-            }
+            {"id": i.id, "degree": i.degree, "college": i.college, "year": i.year}
             for i in q
         ]
     )
@@ -163,12 +115,9 @@ def get_qualification():
 
 @admin_bp.route("/delete_qualification/<int:id>", methods=["DELETE"])
 def delete_qualification(id):
-
     qualification = QualificationTable.query.get_or_404(id)
-
     db.session.delete(qualification)
     db.session.commit()
-
     return jsonify({"message": "Qualification deleted successfully"})
 
 
@@ -197,11 +146,6 @@ def change_admin():
     return jsonify({"success": True, "message": "Credentials updated successfully"})
 
 
-ADMIN_USERNAME = os.getenv("ADMIN_USERNAME")
-ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
-
-
-
 @admin_bp.route("/Adminlogin", methods=["POST"])
 def admin_login():
     data = request.get_json()
@@ -209,10 +153,7 @@ def admin_login():
     username = (data.get("username") or "").strip()
     password = (data.get("password") or "").strip()
 
-
     if username == ADMIN_USERNAME and password == ADMIN_PASSWORD:
         return jsonify({"success": True, "message": "Login successful"})
 
     return jsonify({"success": False, "message": "Invalid credentials"})
-
-
