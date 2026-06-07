@@ -10,32 +10,37 @@ import os
 
 admin_bp = Blueprint("admin_bp", __name__)
 
-ADMIN_USERNAME = os.getenv("ADMIN_USERNAME", "")
-ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "")
+ADMIN_USERNAME = os.getenv("ADMIN_USERNAME")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 
 
 def create_default_admin():
     existing_admin = Adminauthentication.query.first()
 
-    if not existing_admin:
-        admin = Adminauthentication(
-            username=os.getenv("ADMIN_USERNAME"), password=os.getenv("ADMIN_PASSWORD")
-        )
-        db.session.add(admin)
-        db.session.commit()
+    if existing_admin:
+        return
+
+    if not ADMIN_USERNAME or not ADMIN_PASSWORD:
+        return
+
+    admin = Adminauthentication(username=ADMIN_USERNAME, password=ADMIN_PASSWORD)
+
+    db.session.add(admin)
+    db.session.commit()
 
 
 @admin_bp.route("/projects", methods=["POST"])
 def projects():
     data = request.get_json()
-    title = data.get("title")
-    description = data.get("description")
-    url = data.get("url")
 
-    if not title:
+    new_project = projectTable(
+        title=data.get("title"),
+        description=data.get("description"),
+        url=data.get("url"),
+    )
+
+    if not new_project.title:
         return jsonify({"error": "Title is required"}), 400
-
-    new_project = projectTable(title=title, description=description, url=url)
 
     db.session.add(new_project)
     db.session.commit()
@@ -57,21 +62,24 @@ def viewprojects():
 
 @admin_bp.route("/projects_delete/<int:id>", methods=["DELETE"])
 def projects_delete(id):
-    delete_entries = projectTable.query.get_or_404(id)
-    db.session.delete(delete_entries)
+    delete_entry = projectTable.query.get_or_404(id)
+    db.session.delete(delete_entry)
     db.session.commit()
+
     return jsonify({"message": "Project deleted successfully"})
 
 
 @admin_bp.route("/skill_add", methods=["POST"])
 def skill_add():
     data = request.get_json()
+
     skill = data.get("skill")
 
     if not skill:
         return jsonify({"error": "Skill is required"}), 400
 
     new_skill = skilltable(skill=skill)
+
     db.session.add(new_skill)
     db.session.commit()
 
@@ -80,16 +88,17 @@ def skill_add():
 
 @admin_bp.route("/viewskills", methods=["GET"])
 def viewskills():
-    get_skill = skilltable.query.all()
+    skills = skilltable.query.all()
 
-    return jsonify([{"id": s.id, "skill": s.skill} for s in get_skill])
+    return jsonify([{"id": s.id, "skill": s.skill} for s in skills])
 
 
 @admin_bp.route("/skill_delete/<int:id>", methods=["DELETE"])
 def skill_delete(id):
-    skill_drop = skilltable.query.get_or_404(id)
-    db.session.delete(skill_drop)
+    skill = skilltable.query.get_or_404(id)
+    db.session.delete(skill)
     db.session.commit()
+
     return jsonify({"message": "Skill deleted successfully"})
 
 
@@ -97,14 +106,12 @@ def skill_delete(id):
 def add_qualification():
     data = request.get_json()
 
-    degree = data.get("degree")
-    college = data.get("college")
-    year = data.get("year")
+    new_qualification = QualificationTable(
+        degree=data.get("degree"), college=data.get("college"), year=data.get("year")
+    )
 
-    if not degree:
+    if not new_qualification.degree:
         return jsonify({"error": "Degree is required"}), 400
-
-    new_qualification = QualificationTable(degree=degree, college=college, year=year)
 
     db.session.add(new_qualification)
     db.session.commit()
@@ -129,6 +136,7 @@ def delete_qualification(id):
     qualification = QualificationTable.query.get_or_404(id)
     db.session.delete(qualification)
     db.session.commit()
+
     return jsonify({"message": "Qualification deleted successfully"})
 
 
@@ -136,18 +144,15 @@ def delete_qualification(id):
 def change_admin():
     data = request.get_json()
 
-    old_username = data.get("oldUsername")
-    old_password = data.get("oldPassword")
-    new_username = data.get("newUsername")
-    new_password = data.get("newPassword")
+    admin = Adminauthentication.query.filter_by(
+        username=data.get("oldUsername")
+    ).first()
 
-    admin = Adminauthentication.query.filter_by(username=old_username).first()
-
-    if not admin or admin.password != old_password:
+    if not admin or admin.password != data.get("oldPassword"):
         return jsonify({"success": False, "message": "Invalid old credentials"})
 
-    admin.username = new_username
-    admin.password = new_password
+    admin.username = data.get("newUsername")
+    admin.password = data.get("newPassword")
 
     db.session.commit()
 
