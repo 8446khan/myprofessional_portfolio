@@ -93,10 +93,10 @@ const Hero = () => {
 
                     <Typewriter
                         words={[
-                            "Software Engineer",
+
                             "Full Stack Developer",
+                            "Data analyst",
                             "AI/ML Enthusiast",
-                            "Tech Innovator"
                         ]}
                         loop
                         cursor
@@ -113,9 +113,7 @@ const Hero = () => {
                 <p className="text-gray-300 mb-8 leading-relaxed">
 
                     I build intelligent applications,
-                    scalable web systems, and innovative
-                    AI-powered solutions using modern
-                    technologies.
+                    scalable web systems, and analysis data to get insights using modern technologies.
 
                 </p>
 

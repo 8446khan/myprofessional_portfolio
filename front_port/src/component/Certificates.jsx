@@ -13,10 +13,10 @@ const Certificates = () => {
                 "Completed machine learning fundamentals including regression, classification, and clustering.",
 
             image:
-                "/images/ml-certificate.png",
+                "/images/fullstack_dev_certificate.jpeg",
 
             url:
-                "/images/ml-certificate.png"
+                "/images/fullstack_dev_certificate.jpeg"
         },
 
         {
@@ -27,10 +27,10 @@ const Certificates = () => {
                 "Learned Python fundamentals, data structures, and real-world applications.",
 
             image:
-                "/images/ml-certificate.png",
+                "/images/fullstack_dev_certificate.jpeg",
 
             url:
-                "/images/ml-certificate.png"
+                "/images/fullstack_dev_certificate.jpeg"
         },
 
         {
@@ -41,10 +41,10 @@ const Certificates = () => {
                 "Built responsive web applications using React, APIs, and backend technologies.",
 
             image:
-                "/images/ml-certificate.png",
+                "/images/fullstack_dev_certificate.jpeg",
 
             url:
-                "/images/ml-certificate.png"
+                "/images/fullstack_dev_certificate.jpeg"
         }
 
     ];

@@ -48,7 +48,7 @@ const About = () => {
                     leading-relaxed mb-4 md:mb-6">
 
                         I'm a passionate Full Stack Developer and
-                        AI/ML enthusiast focused on building
+                        Data analyst enthusiast focused on building
                         intelligent systems and scalable web
                         applications. I enjoy solving real-world
                         problems using modern technologies.
@@ -60,7 +60,7 @@ const About = () => {
                     leading-relaxed">
 
                         My interests include Machine Learning,
-                        Web Development, and Software Engineering.
+                        Web Development,Data analyzation and visualization and Software Engineering and .
                         I continuously explore new technologies
                         and build innovative projects.
 
@@ -96,7 +96,7 @@ const About = () => {
                         "Full Stack Development",
                         "Machine Learning",
                         "React & Flask",
-                        "AI System Design"
+                        "Data analyst"
                     ].map((item, index) => (
 
                         <div

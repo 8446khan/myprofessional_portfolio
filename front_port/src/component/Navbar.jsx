@@ -13,7 +13,8 @@ const Navbar = () => {
         { name: "Education", href: "#education" },
         { name: "Certificates", href: "#certificates" },
         { name: "About", href: "#about" },
-        { name: "Contact", href: "#contact" }
+        { name: "Contact", href: "#contact" },
+
     ];
 
     return (
