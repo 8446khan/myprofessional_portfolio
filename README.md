@@ -24,7 +24,7 @@ database:postgresql
 portfolio/
 │
 ├── frontend/
-├── backend/ (if any)
+├── backend/ 
 ├── assets/
 └── README.md
 
