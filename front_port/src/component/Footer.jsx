@@ -24,7 +24,7 @@ const Footer = () => {
 
                 <div className="flex flex-wrap justify-center gap-4">
 
-                    <a href="https://www.linkedin.com/feed/">
+                    <a href="https://www.linkedin.com/in/khan-shoaib-6223202ba/">
                         <button className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-purple-600 hover:to-indigo-500 text-white px-5 py-2 rounded-lg font-medium transition shadow-lg hover:shadow-purple-500/40">
                             Linkedin
                         </button>

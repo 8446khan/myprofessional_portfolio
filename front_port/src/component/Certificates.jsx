@@ -6,45 +6,42 @@ const Certificates = () => {
     const certificates = [
 
         {
-            name: "Machine Learning Certification",
-            issuer: "Coursera",
+            name: "Data Analyst Certification",
+
+            issuer: "CognitiveClass.ai powered by IBM Developer Network",
 
             description:
-                "Completed machine learning fundamentals including regression, classification, and clustering.",
+                "Successfully completed comprehensive training in data analysis, including data visualization, data preprocessing, exploratory data analysis (EDA), SQL fundamentals, and business insights using industry-standard tools.",
 
-            image:
-                "/images/fullstack_dev_certificate.jpeg",
+            image: "/images/data_analyst.png",
 
-            url:
-                "/images/fullstack_dev_certificate.jpeg"
+            url: "/images/data_analyst.png"
         },
 
         {
-            name: "Python Programming Certification",
-            issuer: "Udemy",
+            name: "Advanced Certification in Information Technology",
+
+            issuer: "I Dreams Academy",
 
             description:
-                "Learned Python fundamentals, data structures, and real-world applications.",
+                "Completed professional training covering programming fundamentals, database management, web technologies, software development concepts, and practical IT skills required for modern applications.",
 
-            image:
-                "/images/fullstack_dev_certificate.jpeg",
+            image: "/images/idream.jpg",
 
-            url:
-                "/images/fullstack_dev_certificate.jpeg"
+            url: "/images/idream.jpg"
         },
 
         {
             name: "Full Stack Web Development",
-            issuer: "freeCodeCamp",
+
+            issuer: "Physics Wallah (PW)",
 
             description:
-                "Built responsive web applications using React, APIs, and backend technologies.",
+                "Gained hands-on experience in building full-stack web applications using HTML, CSS, JavaScript, React, Node.js, Express.js, databases, REST APIs, authentication, and deployment techniques.",
 
-            image:
-                "/images/fullstack_dev_certificate.jpeg",
+            image: "/images/fullstack_dev_certificate.jpeg",
 
-            url:
-                "/images/fullstack_dev_certificate.jpeg"
+            url: "/images/fullstack_dev_certificate.jpeg"
         }
 
     ];

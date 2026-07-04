@@ -14,6 +14,9 @@ const Navbar = () => {
         { name: "Certificates", href: "#certificates" },
         { name: "About", href: "#about" },
         { name: "Contact", href: "#contact" },
+        { name: "Linkedin", href: "https://www.linkedin.com/in/khan-shoaib-6223202ba/" },
+        { name: "Github", href: "https://github.com/8446khan" },
+        { name: "Resume", href: "/images/khan shoaib_resume.pdf" },
 
     ];
 
